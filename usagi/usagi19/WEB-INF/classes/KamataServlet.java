@@ -15,7 +15,7 @@ public class KamataServlet extends HttpServlet{
 	
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
-	//パラメータを受け取りたい
+	//パラメータを受け取りたい!
 		
 		req.setCharacterEncoding("Windows-31J");
 		
