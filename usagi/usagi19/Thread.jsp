@@ -16,9 +16,7 @@
 		</c:forEach>
 	</table>
 	
-	response.sendRedirect(ginput.htmlh);
-
-
+	<a href="input.html">–ß‚é</a>
 	
 </body>
 </html>
