@@ -12,7 +12,8 @@
 	<table border="1">
 		<tr><th>ƒXƒŒƒbƒhˆê——</th></tr>
 		<c:forEach var="prof" items="${users}">
-			<tr><td>${prof.Thread_Name}</td><td>${prof.Thread_Time}</td><td>${prof.Response_Contents}</td></tr>
+			<tr><td>${prof.Thread_Name}</td><td>${prof.Thread_Time}</td></tr>
+			</tr><td>${prof.Response_Contents}</td></tr>
 		</c:forEach>
 	</table>
 	

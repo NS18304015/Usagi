@@ -5,9 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import info.Profile;
-import database.InsertTest;
-import database.QueryTest;
+import info.IndexProfile;
+import database.IndexInsertTest;
+import database.IndexQueryTest;
 import java.util.List;
 
 
@@ -15,7 +15,7 @@ class IndexServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		//データベースからリストをもらいたい
-		List<Profile> plist=getList();
+		List<IndexProfile> plist=getList();
 		
 		//パラメータをJSPに転送したい。
 		
@@ -28,8 +28,8 @@ class IndexServlet extends HttpServlet{
 		dis.forward(req,res);
 	}
 	
-	public List<Profile> getList(){
-		List<Profile> plist=QueryTest.getQueryList();
+	public List<IndexProfile> getList(){
+		List<IndexProfile> plist=QueryTest.getQueryList();
 		
 		
 		
