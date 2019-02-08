@@ -7,27 +7,27 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
-import info.Profile;
+import info.IndexProfile;
 
-public class QueryTest{
+public class IndexOldQueryTest{
 	
 	public static void main(String[] args){
 		
-		List<Profile> al = getQueryList();
-		System.out.println("username      password"); //見出し
+		List<IndexProfile> al = getQueryList();
+		System.out.println("title      time		response"); //見出し
 
 		for(int i = 0; i < al.size();i++){
-			Profile prof = al.get(i);
-			System.out.println(prof.getName()+"\t"+prof.getPass());
+			IndexProfile prof = al.get(i);
+			System.out.println(prof.getTitle()+"\t"+prof.getTime()+"\t"+prof.getContents());
 		
 		}
 	
 	
 	}
 	
-	public static List<Profile> getQueryList(){
+	public static List<IndexProfile> getQueryList(){
 		
-		List<Profile> userList = new ArrayList<Profile>();
+		List<IndexProfile> userList = new ArrayList<IndexProfile>();
 	
 	
 		try{
@@ -35,11 +35,12 @@ public class QueryTest{
 
 			//Oracleに接続する
 			Connection cn=
-				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","tuser","pass");
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","usagi","pass");
 			System.out.println("接続完了");
 			
 			//select文
-			String sql="select username, password from user_table";
+			String sql_1="select Thread_Name,Thread_Time,Response_Contents from THREAD_TABLE natural join RESPONSE_TABLE order by Thread_Time asc";
+			//String sql_2="select Response_Contents from Response_TABLE";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する
 			Statement st=cn.createStatement();
@@ -47,16 +48,19 @@ public class QueryTest{
 			//select文を実行し
 			//ResultSetインターフェイスを実装したクラスの
 			//インスタンスが返る
-			ResultSet rs=st.executeQuery(sql);
+			ResultSet rs=st.executeQuery(sql_1);	//rs1はTHREAD_TABALE
+			//ResultSet rs2=st.executeQuery(sql_2);	//rs1はRESPONSE_TABALE
 
 			//カーソルを一行だけスクロールし、データをフェッチする
 			while(rs.next()){
-				Profile prof = new Profile();
+				IndexProfile prof = new IndexProfile();
 				
-				String name = rs.getString(1);	//1列目のデータを取得
-				String pass = rs.getString(2);	//2列目のデータを取得
-				prof.setName(name);
-				prof.setPass(pass);
+				String title = rs.getString(1);	//1列目のデータを取得
+				String time = rs.getString(2);	//2列目のデータを取得
+				String contents = rs.getString(3);	//2列目のデータを取得
+				prof.setTitle(title);
+				prof.setTime(time);
+				prof.setContents(contents);
 				
 				userList.add(prof);
 				

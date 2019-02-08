@@ -6,8 +6,8 @@ import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import info.IndexProfile;
-import database.IndexInsertTest;
-import database.IndexQueryTest;
+//import database.IndexInsertTest;
+import database.IndexOldQueryTest;
 import java.util.List;
 
 
@@ -29,7 +29,7 @@ class IndexServlet extends HttpServlet{
 	}
 	
 	public List<IndexProfile> getList(){
-		List<IndexProfile> plist=IndexNewQueryTest.getQueryList();
+		List<IndexProfile> plist=IndexOldQueryTest.getQueryList();
 		
 		
 		

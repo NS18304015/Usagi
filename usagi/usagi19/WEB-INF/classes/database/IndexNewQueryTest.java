@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import info.IndexProfile;
 
-public class IndexQueryTest{
+public class IndexNewQueryTest{
 	
 	public static void main(String[] args){
 		
@@ -39,8 +39,8 @@ public class IndexQueryTest{
 			System.out.println("接続完了");
 			
 			//select文
-			String sql_1="select Thread_Name,Thread_Time from THREAD_TABLE";
-			String sql_2="select Response_Contents from Response_TABLE";
+			String sql_1="select Thread_Name,Thread_Time,Response_Contents from THREAD_TABLE natural join Response_TABLE order by Thread_Time desc";
+			//String sql_2="select Response_Contents from Response_TABLE";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する
 			Statement st=cn.createStatement();
@@ -48,8 +48,8 @@ public class IndexQueryTest{
 			//select文を実行し
 			//ResultSetインターフェイスを実装したクラスの
 			//インスタンスが返る
-			ResultSet rs=st.executeQuery(sql_1);
-			//ResultSet rs=st.executeQuery(sql_2);
+			ResultSet rs=st.executeQuery(sql_1);	//rs1はTHREAD_TABALE
+			//ResultSet rs2=st.executeQuery(sql_2);	//rs1はRESPONSE_TABALE
 
 			//カーソルを一行だけスクロールし、データをフェッチする
 			while(rs.next()){

@@ -6,8 +6,8 @@ import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import info.IndexProfile;
-import database.IndexInsertTest;
-import database.IndexQueryTest;
+//import database.IndexInsertTest;
+import database.IndexGoodQueryTest;
 import java.util.List;
 
 
@@ -18,7 +18,6 @@ class IndexServlet extends HttpServlet{
 		List<IndexProfile> plist=getList();
 		
 		//パラメータをJSPに転送したい。
-		
 		req.setAttribute("users",plist);
 		
 		//転送先のJSPを指定
@@ -29,9 +28,7 @@ class IndexServlet extends HttpServlet{
 	}
 	
 	public List<IndexProfile> getList(){
-		List<IndexProfile> plist=IndexNewQueryTest.getQueryList();
-		
-		
+		List<IndexProfile> plist=IndexGoodQueryTest.getQueryList();
 		
 		return plist;
 	}
