@@ -11,7 +11,7 @@ import database.IndexOldQueryTest;
 import java.util.List;
 
 
-class IndexServlet extends HttpServlet{
+public class IndexOldServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		//データベースからリストをもらいたい

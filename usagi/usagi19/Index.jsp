@@ -18,9 +18,17 @@
 	</table>
 	
 	<h1>スレッド並べ替え</h1>
-	<a href="#" onclick="サーブレットの処理のリンク">人気順</a>
-	<a href="#" onclick="サーブレットの処理のリンク">新着順</a>
-	<a href="#" onclick="サーブレットの処理のリンク">投稿順</a>
+	<form method = 'get' action = 'サーブレット名'>
+	<a href="#">人気順</a>
+	</form>
+	
+	<form method = 'get' action = 'サーブレット名'>
+	<a href="#">新着順</a>
+	</form>
+	
+	<form method = 'get' action = 'サーブレット名'>
+	<a href="#">投稿順</a>
+	</from>
 	
 	<a href="#">トップへ戻る</a>
 	

@@ -5,19 +5,20 @@ import javax.servlet.ServletException;
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import info.IndexProfile;
+import info.ThreadProfile;
 //import database.IndexInsertTest;
-import database.IndexGoodQueryTest;
+import database.ThreadOldQueryTest;
 import java.util.List;
 
 
-public class IndexGoodServlet extends HttpServlet{
+public class ThreadOldServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		//データベースからリストをもらいたい
-		List<IndexProfile> plist=getList();
+		List<ThreadProfile> plist=getList();
 		
 		//パラメータをJSPに転送したい。
+		
 		req.setAttribute("users",plist);
 		
 		//転送先のJSPを指定
@@ -27,8 +28,10 @@ public class IndexGoodServlet extends HttpServlet{
 		dis.forward(req,res);
 	}
 	
-	public List<IndexProfile> getList(){
-		List<IndexProfile> plist=IndexGoodQueryTest.getQueryList();
+	public List<ThreadProfile> getList(){
+		List<ThreadProfile> plist=ThreadOldQueryTest.getThreadOldQueryList();
+		
+		
 		
 		return plist;
 	}
