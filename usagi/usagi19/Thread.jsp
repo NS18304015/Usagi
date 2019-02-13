@@ -30,7 +30,7 @@
 
 <html>
 	<head>
-			<title>スレッド</title>
+			<title>${prof.time}</title>
 	</head>
 	   <script>
        </script>
@@ -47,7 +47,7 @@
 <table border="1">	
 	<c:forEach var="i" begin="1" end="5" step="1">
 		
-		<tr><th><c:out value="${i}" />.${prof.name}&nbsp;&nbsp;${prof.time}<br>${prof.pass}<button id="btn_action">返信</button>
+		<tr><th><c:out value="${i}" />.${prof.name}&nbsp;&nbsp;${prof.time}<br>${prof.contents}<button id="btn_action">返信</button>
 </th></tr><br>
 	</c:forEach>
 </table>
@@ -55,10 +55,11 @@
 
  
 <!--ダイアログの内容-->
+<!--${Provisional.Response_ParentNo}は仮のものです-->
 <div id="mydialog" title="返信">
 	  <input type='text' placeholder="名前" name='name'><br>
 		<p>
-		<textarea name="area1"placeholder='内容を入力' style="width:200px; height:100px;" cols="40" rows="8"></textarea></p><br>
+		<textarea name="area1"placeholder='内容を入力' style="width:200px; height:100px;" cols="40" rows="8">&gt;&gt;${Provisional.Response_ParentNo}</textarea></p><br>
 		<input type='submit' value='送信'>
 </div>
 
