@@ -37,18 +37,35 @@
 
 <body>
 
-<p>スレッドタイトル<input type="submit" value="投稿"></p>
+<div id="header">
+		<p style="text-align: right"><a href='test.html' class="btn-gradient-3d-orange">TOP</a>&nbsp;&nbsp;&nbsp;<a href='create.html'  class="btn-gradient-3d-orange">スレッドの作成</a>
+		<input type='text' size='40'  placeholder='スレッドのタイトルを入力' name='title'><a href="#" class="btn-square-so-pop">検索</a>　　　　　　　　　</p>
+		<form method='post' action='mahiro'>
+		</form>
+	</div>
+<CENTER>
 <table border="1">	
 	<c:forEach var="i" begin="1" end="5" step="1">
 		
-		<tr><th><c:out value="${i}" />.ああああああ<br>aaaaa<input type="submit" value="返信する"></th></tr><br>
+		<tr><th><c:out value="${i}" />.${prof.name}&nbsp;&nbsp;${prof.time}<br>${prof.pass}<button id="btn_action">返信</button>
+</th></tr><br>
 	</c:forEach>
 </table>
+</CENTER>
 
-<button id="btn_action">ダイアログ表示</button>
  
 <!--ダイアログの内容-->
-<div id="mydialog" title="サンプルタイトル">オリジナルダイアログをポップアップ表示するサンプル。</div>
+<div id="mydialog" title="返信">
+	  <input type='text' placeholder="名前" name='name'><br>
+		<p>
+		<textarea name="area1"placeholder='内容を入力' style="width:200px; height:100px;" cols="40" rows="8"></textarea></p><br>
+		<input type='submit' value='送信'>
+</div>
+
+
+
+
+
 
 </body>
 </html>
