@@ -57,15 +57,15 @@
 <!--ダイアログの内容-->
 <!--${Provisional.Response_ParentNo}は仮のものです-->
 <div id="mydialog" title="返信">
-	  <input type='text' placeholder="名前" name='name'><br>
+	<form>
+	  	<input type='text' placeholder="名前" name='name' required><br>
 		<p>
-		<textarea name="area1"placeholder='内容を入力' style="width:200px; height:100px;" cols="40" rows="8">&gt;&gt;${Provisional.Response_ParentNo}</textarea></p><br>
+			<textarea name="area1"placeholder='内容を入力' style="width:200px;
+			 height:100px;" cols="40" rows="8">&gt;&gt;${Provisional.Response_ParentNo}required</textarea>
+		</p><br>
 		<input type='submit' value='送信'>
+	</form>
 </div>
-
-
-
-
 
 
 </body>
