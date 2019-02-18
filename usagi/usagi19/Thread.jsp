@@ -12,6 +12,9 @@
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" type="text/css" href="Thread.css">
+
 <!-- この部分にプログラムの内容を記述します -->
 
 <script>
@@ -27,6 +30,11 @@
 })
 
 </script>
+
+
+<style type="text/css">
+
+</style>
 
 <html>
 	<head>
@@ -44,13 +52,32 @@
 		</form>
 	</div>
 <CENTER>
-<table border="1">	
+
+
+<h1>鋼のスレッドタイトル</h1>
+
 	<c:forEach var="i" begin="1" end="5" step="1">
 		
-		<tr><th><c:out value="${i}" />.${prof.name}&nbsp;&nbsp;${prof.time}<br>${prof.contents}<button id="btn_action">返信</button>
-</th></tr><br>
+		<c:out value="${i}" />.${prof.name}&nbsp;&nbsp;${prof.time}<br>${prof.contents}<button id="btn_action">返信</button>
+<br>
 	</c:forEach>
-</table>
+
+
+<hr>
+<h2>投稿フォーム</h2>
+	<form method='post' action='*'>
+		<input type='text' placeholder="名前" name='name' required><br>
+		<p>
+		<textarea name="area1"placeholder='内容を入力' style="width:200px;
+		height:100px;" cols="40" rows="8"  required></textarea>
+		</p><br>
+		<input type='submit' value='送信'>
+	</form>
+	<input type="button" value="このページを再読込します" onclick="window.location.reload();" />
+
+
+
+
 </CENTER>
 
  
@@ -61,7 +88,7 @@
 	  	<input type='text' placeholder="名前" name='name' required><br>
 		<p>
 			<textarea name="area1"placeholder='内容を入力' style="width:200px;
-			 height:100px;" cols="40" rows="8">&gt;&gt;${Provisional.Response_ParentNo}required</textarea>
+			 height:100px;" cols="40" rows="8">&gt;&gt;${Provisional.Response_ParentNo}</textarea>
 		</p><br>
 		<input type='submit' value='送信'>
 	</form>
