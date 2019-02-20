@@ -1,0 +1,19 @@
+<servlet>
+		<servlet-name>addmin</servlet-name>
+		<jsp-file>/addmin.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>addmin</servlet-name>
+		<url-pattern>/addmin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addminprint</servlet-name>
+		<servlet-class>AddminServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>addminprint</servlet-name>
+		<url-pattern>/addminprint</url-pattern>
+	</servlet-mapping>
