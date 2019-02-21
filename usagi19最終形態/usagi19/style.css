@@ -72,7 +72,7 @@ div#header {
 	height:77px;	/*背景画像のサイズに合わせてボックスの高さを指定*/
 	background-image:url("images/bg_header.jpg");	/*ヘッダ部分の背景画像*/
 	background-repeat:no-repeat;		/*背景画像を繰り返さない*/
-	background-color:#cccccc;		/*ヘッダ部分の背景色*/
+	background-color:#e0ecff;		/*ヘッダ部分の背景色*/
 }
 h1 {
 	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/

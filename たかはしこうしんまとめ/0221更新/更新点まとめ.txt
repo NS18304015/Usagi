@@ -1,0 +1,44 @@
+↓今回の送ったファイル一覧↓
+kensaku.jsp
+KensakuQuery.class
+KensakuQuery.java
+KensakuServlet.class
+KensakuServlet.java
+更新点まとめ.txt(このテキストです)
+
+
+
+
+①検索結果を表示させるkensaku.jspを作成しました！
+
+web.xmlに下記を記述してください
+
+	<servlet>
+		<servlet-name>kekka</servlet-name>
+		<jsp-file>/kensaku.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>kekka</servlet-name>
+		<url-pattern>/kekka</url-pattern>
+	</servlet-mapping>
+
+↑ここまでweb.xmlの修正
+
+
+kensaku.jspをusagi19内にいれてください
+
+
+②KensakuServlet内の転送先のURLを変更しました
+
+classes内のKensakuServlet.classを新しいものに置き換えてください。
+
+
+③KensakuQueryのSQL文その他を編集しました
+
+database内のKensakuServlet.classを新しいものに置き換えてください
+
+
+
+
+

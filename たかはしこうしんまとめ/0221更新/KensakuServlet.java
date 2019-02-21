@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import info.IndexProfile;
+import info.UsagiProfile;
 import database.InsertTest;
 import database.KensakuQuery;
 import java.util.List;
@@ -20,7 +20,7 @@ public class KensakuServlet extends HttpServlet{
 			//POST要求によって送信されたパラメータを取得する
 			String title = req.getParameter("title");
 			
-			List<IndexProfile> plist=KensakuQuery.getQueryList(title);
+			List<UsagiProfile> plist=KensakuQuery.getQueryList(title);
 			
 
 			//HttpServletRequestの実装クラスのインスタンスに
@@ -32,7 +32,7 @@ public class KensakuServlet extends HttpServlet{
 			//インスタンスを取得する
 			//引数は転送先のURL
 			RequestDispatcher dispatcher=
-				req.getRequestDispatcher("/index");
+				req.getRequestDispatcher("/kekka");
 			
 			//転送先に要求を転送する
 			dispatcher.forward(req,res);
