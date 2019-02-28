@@ -39,7 +39,7 @@ public class IndexOldQueryTest{
 			System.out.println("Ú‘±Š®—¹");
 			
 			//select•¶
-			String sql_1="select thread_table.thread_no,thread_name,response_username,response_contents from thread_table join response_table on thread_table.thread_no=response_table.thread_no order by thread_table.thread_no asc";
+			String sql_1="select thread_table.thread_no,thread_name,response_username,response_contents from thread_table join response_table on thread_table.thread_no=response_table.thread_no where response_serialno=1 order by thread_table.thread_no asc";
 			//String sql_1="select Thread_Name,Thread_Time,Response_Contents from THREAD_TABLE natural join Response_TABLE order by Thread_Time desc";
 			//String sql_2="select Response_Contents from Response_TABLE";
 

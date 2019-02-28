@@ -14,7 +14,7 @@
 <body>
 	
 	<div id="header">
-		<p style="text-align: left "><a href='indexnew' class="btn-gradient-3d-orange" >TOP</a>&nbsp;&nbsp;&nbsp;<a href='create.html' class="btn-gradient-3d-orange">スレッドの作成</a>
+		<p style="text-align: left "><a href='indexnew' class="btn-gradient-3d-orange" >TOP</a>&nbsp;&nbsp;&nbsp;<a href='create.jsp' class="btn-gradient-3d-orange">スレッドの作成</a>
 		<!-- ↓から -->
 		<form method='post' action='kensaku'>
 			<input type='text' class="btn-square-so-pop" placeholder='スレッドのタイトルを入力' name='title'><input type='submit' value='検索'>
@@ -25,13 +25,23 @@
 	<c:forEach var="prof" begin="0" end="0" step="1" items="${users}">
 		<table><tr><th><h1>タイトル:</h1></th><td><h1>${prof.title}</h1></td></tr></table>
 	</c:forEach>
+	
 	<%! int count = 0;%>
 	<table border="1">
 		<tr><th>レスポンス一覧</th></tr>
-		<tr><th>シリアルナンバー</th><th>名前</th><th>コメント</th></tr>
+		<tr><th>シリアルナンバー</th><th>名前</th><th>コメント</th><th>投稿時間</th></tr>
 		<c:forEach var="prof" items="${users}">
-			<tr><td>${prof.serialno}</td><td>${prof.name}</td><td>${prof.contents}</td></tr>
-	
+			<tr><td>${prof.serialno}</td><td>${prof.name}</td><td>${prof.contents}</td><td>${prof.time}</td>
+			<td>
+			<form method='post' action='threadnew?tno=${prof.threadno}'>
+				<button name="rating" value="${prof.resno}">評価</button>
+			</form>
+			</td>
+			<td>
+			<form method='post' action='threadnew?tno=${prof.threadno}'>
+				<button name="report" value="${prof.resno}">報告</button>
+			</form></tr>
+			
 		</c:forEach>
 	</table>
 	

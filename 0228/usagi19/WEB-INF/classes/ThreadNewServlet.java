@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import info.UsagiProfile;
 import database.ThreadNewInsertTest;
 import database.ThreadNewQueryTest;
+import database.ThreadUpdate;
 import java.util.List;
 
 
@@ -25,7 +26,6 @@ public class ThreadNewServlet extends HttpServlet{
 		tno=req.getParameter("tno");
 		//serial=req.getParameter("serial");
 		//ThreadNewQueryTest.getQueryList(tno);
-		//データベースに書き込みたい
 		
 		System.out.println(tno);
 		List<UsagiProfile> plist=ThreadNewQueryTest.getQueryList(tno);
@@ -42,42 +42,68 @@ public class ThreadNewServlet extends HttpServlet{
 		//JSPに転送
 		dis.forward(req,res);
 	}
+	
+	
+	
+	
+	
+	
+	
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
-	//パラメータを受け取りたい
-		
+		//パラメータを受け取りたい
 		req.setCharacterEncoding("Windows-31J");
 		
-		String name=req.getParameter("name");
-		String contents=req.getParameter("contents");
-		serial=req.getParameter("serial");
-		//tno=req.getParameter("tno");
-		
-		String n="";
-		
-		while(true){
+		if(req.getParameter("name") == null){
+		}else{
+			String name=req.getParameter("name");
+			String contents=req.getParameter("contents");
+			serial=req.getParameter("serial");
+			
+			String n="";
+			
 			if(name.indexOf("\r\n")>=0){
 				n=name.replace("\r\n","<br>");
 				System.out.println(n+"aaaa");
 			}else{
 				n=name;
 			}
-			break;
-		}
-		String c="";
-		
-		while(true){
+			
+			
+			String c="";
+			
 			if(contents.indexOf("\r\n")>=0){
 				c=contents.replace("\r\n","<br>");
 				System.out.println(c+"aaaa");
 			}else{
 				c=contents;
 			}
-			break;
+			
+			//データベースに書き込みたい
+			ThreadNewInsertTest.insertUser_ResponseTable(n,c,tno,serial);
 		}
 		
-		//データベースに書き込みたい
-		ThreadNewInsertTest.insertUser_ResponseTable(n,c,tno,serial);
+		
+		
+		//ratingがnullのときとそうでないときで分岐
+		if(req.getParameter("rating") == null){
+			//空処理
+		}else{
+			String rating=req.getParameter("rating");
+			System.out.println("サーブレット"+rating);
+			database.ThreadUpdate.UpdateRating(rating);
+		}
+		
+		//reportがnullのときとそうでないときで分岐
+		if(req.getParameter("report") == null){
+			//空処理
+		}else{
+			String report=req.getParameter("report");
+			System.out.println("サーブレット"+report);
+			database.ThreadUpdate.UpdateReport(report);
+		}
+		
+		
 		//データベースからリストをもらいたい
 		/*List<UsagiProfile> plist=getList();*/
 		List<UsagiProfile> plist=ThreadNewQueryTest.getQueryList(tno);

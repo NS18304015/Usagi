@@ -63,6 +63,7 @@ public class AddminQueryTest{
 				prof.setResreport(resreport);
 				prof.setResno(resno);
 				
+				System.out.println("レスクエリテスト"+prof);
 				userList.add(prof);
 				
 				//System.out.println("username"+"\t"+"password"); //確認表示
@@ -99,7 +100,7 @@ public class AddminQueryTest{
 
 			//Oracleに接続する
 			Connection cn=
-				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","tuser","pass");
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","usagi","pass");
 			System.out.println("接続完了");
 			
 			String sql="select Thread_No,Thread_Name,Thread_Time,Thread_Report from THREAD_TABLE where Thread_Report >= 1";
@@ -125,6 +126,7 @@ public class AddminQueryTest{
 				prof.setTime(time);
 				prof.setThreadreport(threadreport);
 				
+				System.out.println("スレッドクエリテスト"+prof);
 				userList.add(prof);
 				
 				//System.out.println("username"+"\t"+"password"); //確認表示

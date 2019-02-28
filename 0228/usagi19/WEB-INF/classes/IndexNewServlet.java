@@ -12,55 +12,67 @@ import java.util.List;
 
 
 public class IndexNewServlet extends HttpServlet{
+	String today;
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 	//パラメータを受け取りたい
 		
 		req.setCharacterEncoding("Windows-31J");
 		
-		String title=req.getParameter("title");
-		String name=req.getParameter("name");
-		String contents=req.getParameter("contents");
-		
-		String t="";
-		
-		while(true){
+		if(req.getParameter("name") == null){
+		}else{
+			String title=req.getParameter("title");
+			String name=req.getParameter("name");
+			String contents=req.getParameter("contents");
+			today=req.getParameter("time");
+			
+			String t="";
+			
 			if(title.indexOf("\r\n")>=0){
 				t=title.replace("\r\n","<br>");
 				System.out.println(t+"aaaa");
 			}else{
 				t=title;
 			}
-			break;
-		}
-		String n="";
-		
-		while(true){
+			
+			String n="";
+			
+			
 			if(name.indexOf("\r\n")>=0){
 				n=name.replace("\r\n","<br>");
 				System.out.println(n+"aaaa");
 			}else{
 				n=name;
 			}
-			break;
-		}
-		String c="";
-		
-		while(true){
+			
+			
+			String c="";
+			
+			
 			if(contents.indexOf("\r\n")>=0){
 				c=contents.replace("\r\n","<br>");
 				System.out.println(c+"aaaa");
 			}else{
 				c=contents;
 			}
-			break;
+			
+			//データベースに書き込みたい
+			IndexNewInsertTest.insertUser_ThreadTable(t,today);
+			IndexNewInsertTest.insertUser_ResponseTable(n,c,today);
 		}
 		
-		//title.substring(t,)
 		
-		//データベースに書き込みたい
-		IndexNewInsertTest.insertUser_ThreadTable(t);
-		IndexNewInsertTest.insertUser_ResponseTable(n,c);
+		//reportがnullのときとそうでないときで分岐
+		if(req.getParameter("report") == null){
+			//空処理
+		}else{
+			String report=req.getParameter("report");
+			System.out.println("サーブレット"+report);
+			database.ThreadUpdate.UpdateThreadReport(report);
+		}
+		
+		
+		
 		//データベースからリストをもらいたい
 		List<UsagiProfile> plist=getList();
 		

@@ -51,6 +51,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>threadold</servlet-name>
+		<servlet-class>ThreadOldServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>threadold</servlet-name>
+		<url-pattern>/threadold</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>kensaku</servlet-name>
 		<servlet-class>KensakuServlet</servlet-class>
 	</servlet>
@@ -58,6 +68,16 @@
 	<servlet-mapping>
 		<servlet-name>kensaku</servlet-name>
 		<url-pattern>/kensaku</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>kensakuold</servlet-name>
+		<servlet-class>KensakuoldServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>kensakuold</servlet-name>
+		<url-pattern>/kensakuold</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -124,5 +144,28 @@
 		<servlet-name>addmin</servlet-name>
 		<url-pattern>/addmin</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>kekka</servlet-name>
+		<jsp-file>/kensaku.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>kekka</servlet-name>
+		<url-pattern>/kekka</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/nocontent.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/nocontent.jsp</location>
+	</error-page>
 
 </web-app>

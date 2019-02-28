@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import info.UsagiProfile;
 
-public class ThreadNewQueryTest{
+public class ThreadOldQueryTest{
 	/*public static void main(String[] args){
 		IndexNewInsertTest.insertUser_Table(args[0],args[1]);
 	}*/
@@ -31,7 +31,7 @@ public class ThreadNewQueryTest{
 			System.out.println("接続完了");
 			
 			//select文
-			String sql_1="select response_serialno,response_username,response_contents,response_rating,thread_name,response_no,thread_table.thread_no,response_time from response_table join thread_table on response_table.thread_no=thread_table.thread_no where thread_table.thread_no='"+Tno+"'";
+			String sql_1="select response_serialno,response_username,response_contents,response_rating,thread_name,thread_table.thread_no from response_table join thread_table on response_table.thread_no=thread_table.thread_no where thread_table.thread_no='"+Tno+"' order by response_serialno desc";
 			//String sql_1="select Thread_Name,Thread_Time,Response_Contents from THREAD_TABLE natural join Response_TABLE order by Thread_Time desc";
 			//String sql_2="select Response_Contents from Response_TABLE";
 
@@ -53,16 +53,11 @@ public class ThreadNewQueryTest{
 				String contents = rs.getString(3);	//2列目のデータを取得
 				String rating = rs.getString(4);	//2列目のデータを取得
 				String title = rs.getString(5);
-				String resno = rs.getString(6);
-				String time = rs.getString(8);
-				System.out.println("クエリのレス番号"+resno);
 				prof.setSerialno(serialno);
 				prof.setName(name);
 				prof.setContents(contents);
 				prof.setRating(rating);
 				prof.setTitle(title);
-				prof.setResno(resno);
-				prof.setTime(time);
 				
 				userList.add(prof);
 				

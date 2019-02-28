@@ -3,17 +3,19 @@
 		java.text.SimpleDateFormat"
 	pageEncoding="Windows-31J"
 	contentType="text/html;charset=Windows-31J" %>
-	
+
 <%--JSTL 1.1.2 core タグライブラリ--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html>
 <head>
+	<title>スレッド作成</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>掲示板</title>
 </head>
 <body>
+	<%! String today=null; %>
+
 	<div id="header">
 		<p style="text-align: left "><a href='indexnew' class="btn-gradient-3d-orange" >TOP</a>&nbsp;&nbsp;&nbsp;<a href='create.jsp' class="btn-gradient-3d-orange">スレッドの作成</a>
 		<!-- ↓から -->
@@ -22,30 +24,18 @@
 		</form>
 		<!-- ↑まで変更しました（検索のやつ） -->
 	</div>
-	
-	<table border="1">
-		<tr><th>スレッド一覧</th><th>タイトル</th><th>名前</th><th>内容</th><th>投稿時間</th></tr>
-		<c:forEach var="prof" items="${users}">
-			<tr><td><a href="threadnew?tno=${prof.threadno}">${prof.threadno}</a></td>
-			<td>${prof.title}</td><td>${prof.name}</td><td>${prof.contents}</td><td>${prof.time}</td>
-			<td>
-			<form method='post' action='indexnew'>
-				<button name="report" value="${prof.threadno}">報告</button>
-			</form>
-			</td>
-			</tr>
-		</c:forEach>
-	</table>
-	
-	<h1>スレッド並べ替え</h1>
-	<a href="indexgood">人気順</a>
-	</form>
-	
-	<a href="indexnew">新着順</a>
-	
-	<a href="indexold">投稿順</a>
-	
-	
-	
+	<%
+		Calendar cal=Calendar.getInstance();
+		Date date=cal.getTime();
+		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd H:m:s");
+		today=formatter.format(date);
+		%>
+		
+		<form method='post' action='indexnew'>
+			<textarea name="title"placeholder='タイトル' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea name="name"placeholder='名前' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea name="contents"placeholder='一件目のレス' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>	
+			<button type='submit' value='<%=today%>' name='time'>送信</button>
+		</form>
 </body>
 </html>

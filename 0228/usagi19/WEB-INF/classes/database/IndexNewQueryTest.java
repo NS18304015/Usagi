@@ -39,7 +39,7 @@ public class IndexNewQueryTest{
 			System.out.println("接続完了");
 			
 			//select文
-			String sql_1="select thread_table.thread_no,thread_name,response_username,response_contents from thread_table join response_table on thread_table.thread_no=response_table.thread_no where response_serialno=1 order by thread_table.thread_no desc";
+			String sql_1="select thread_table.thread_no,thread_name,response_username,response_contents,response_time from thread_table join response_table on thread_table.thread_no=response_table.thread_no where response_serialno=1 order by thread_table.thread_no desc";
 			//String sql_1="select Thread_Name,Thread_Time,Response_Contents from THREAD_TABLE natural join Response_TABLE order by Thread_Time desc";
 			//String sql_2="select Response_Contents from Response_TABLE";
 
@@ -59,11 +59,13 @@ public class IndexNewQueryTest{
 				String no = rs.getString(1);	//1列目のデータを取得
 				String title = rs.getString(2);	//1列目のデータを取得
 				String name = rs.getString(3);	//2列目のデータを取得
-				String contents = rs.getString(4);	//2列目のデータを取得
+				String contents = rs.getString(4);
+				String today = rs.getString(5);//2列目のデータを取得
 				prof.setThreadno(no);
 				prof.setTitle(title);
 				prof.setName(name);
 				prof.setContents(contents);
+				prof.setTime(today);
 				
 				userList.add(prof);
 				
