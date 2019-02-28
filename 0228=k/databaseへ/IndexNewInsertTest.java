@@ -12,7 +12,7 @@ public class IndexNewInsertTest{
 	
 	static Connection cn;
 	
-	public static int insertUser_ThreadTable(String Title){
+	public static int insertUser_ThreadTable(String Title,String Today){
 		int count = 0; //処理した行数を入れるための変数
 		try{
 			//Driverインターフェイスを実装するクラスをロードする
@@ -30,7 +30,7 @@ public class IndexNewInsertTest{
 			System.out.println("接続完了");
 			
 			//SQL文を変数に格納する
-			String sql="insert into THREAD_TABLE(Thread_No,Thread_Name,Thread_Report) values(TEST_SEQ_A.nextval,'"+Title+"',1)";
+			String sql="insert into THREAD_TABLE(Thread_No,Thread_Name,Thread_Report,Thread_Time) values(TEST_SEQ_A.nextval,'"+Title+"',1,'"+Today+"')";
 			
 			//Statementインターフェイスを実装するクラスの
 			//インスタンスを取得する
@@ -60,7 +60,7 @@ public class IndexNewInsertTest{
 		return count;
 	}
 	
-	public static int insertUser_ResponseTable(String Name,String Contents){
+	public static int insertUser_ResponseTable(String Name,String Contents,String Today){
 		int count = 0; //処理した行数を入れるための変数
 		try{
 			//Driverインターフェイスを実装するクラスをロードする
@@ -78,7 +78,7 @@ public class IndexNewInsertTest{
 			System.out.println("接続完了");
 			
 			//SQL文を変数に格納する
-			String sql="insert into RESPONSE_TABLE values(TEST_SEQ_B.nextval,1,'"+Name+"','"+Contents+"','11',TEST_SEQ_A.currval,1,1,1)";
+			String sql="insert into RESPONSE_TABLE values(TEST_SEQ_B.nextval,1,'"+Name+"','"+Contents+"','"+Today+"',TEST_SEQ_A.currval,1,1,1)";
 			System.out.println(sql);
 			
 			//Statementインターフェイスを実装するクラスの
