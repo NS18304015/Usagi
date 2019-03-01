@@ -1,5 +1,8 @@
 <%@ page pageEncoding="Windows-31J"
-	import="java.util.ArrayList"
+	import="java.util.ArrayList,
+			java.util.Calendar,
+			java.util.Date,
+			java.text.SimpleDateFormat"
 	contentType="text/html;charset=Windows-31J" %>
 
 <%--JSTL 1.1.2 core タグライブラリ--%>
@@ -8,10 +11,11 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css?0">
 	<title>掲示板</title>
 </head>
 <body>
+	<%! String today=null; %>
 	
 	<div id="header">
 		<p style="text-align: left "><a href='indexnew' class="btn-gradient-3d-orange" >TOP</a>&nbsp;&nbsp;&nbsp;<a href='create.jsp' class="btn-gradient-3d-orange">スレッドの作成</a>
@@ -34,12 +38,12 @@
 		<c:forEach var="prof" items="${users}">
 			<tr><td>${prof.serialno}</td><td>${prof.name}</td><td>${prof.contents}</td><td>${prof.time}</td>
 			<td>
-			<form method='post' action='threadnew?tno=${prof.threadno}'>
+			<form method='post' action='threadold?tno=${prof.threadno}'>
 				<button name="rating" value="${prof.resno}">評価</button>
 			</form>
 			</td>
 			<td>
-			<form method='post' action='threadnew?tno=${prof.threadno}'>
+			<form method='post' action='threadold?tno=${prof.threadno}'>
 				<button name="report" value="${prof.resno}">報告</button>
 			</form></tr>
 			
@@ -51,16 +55,25 @@
 		
 	 %>
 	 
+	<%
+		Calendar cal=Calendar.getInstance();
+		Date date=cal.getTime();
+		SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd H:m:s");
+		today=formatter.format(date);
+	%>
+	
 	
 	<h1>返答</h1>
-		<form method='post' action='threadnew?tno=${prof.threadno}'>
+		<form method='post' action='threadold?tno=${prof.threadno}'>
 			<textarea name="name"placeholder='名前' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
 			<textarea name="contents"placeholder='レスポンスの内容' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<input type="hidden" value='<%=today %>' name='today'>
 			<button type='submit' value='<%=count %>' name='serial'>送信</button>
 		</form>
 	
 		<a href="threadnew?tno=${tno}">新着順</a>
 		<a href="threadold?tno=${tno}">投稿順</a>
+		<a href="threadgood?tno=${tno}">人気順</a>
 
 		
 	

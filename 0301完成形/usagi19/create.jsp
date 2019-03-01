@@ -11,7 +11,7 @@
 <html>
 <head>
 	<title>ƒXƒŒƒbƒhì¬</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css?0">
 </head>
 <body>
 	<%! String today=null; %>

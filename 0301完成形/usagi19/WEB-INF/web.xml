@@ -61,6 +61,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>threadgood</servlet-name>
+		<servlet-class>ThreadGoodServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>threadgood</servlet-name>
+		<url-pattern>/threadgood</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>kensaku</servlet-name>
 		<servlet-class>KensakuServlet</servlet-class>
 	</servlet>

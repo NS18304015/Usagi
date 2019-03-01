@@ -6,13 +6,13 @@ import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import info.UsagiProfile;
-//import database.ThreadOldInsertTest;
-import database.ThreadOldQueryTest;
+//import database.ThreadGoodInsertTest;
+import database.ThreadGoodQueryTest;
 import database.ThreadUpdate;
 import java.util.List;
 
 
-public class ThreadOldServlet extends HttpServlet{
+public class ThreadGoodServlet extends HttpServlet{
 	
 	String tno;
 	
@@ -27,7 +27,7 @@ public class ThreadOldServlet extends HttpServlet{
 		
 		
 		System.out.println(tno);
-		List<UsagiProfile> plist=ThreadOldQueryTest.getQueryList(tno);
+		List<UsagiProfile> plist=ThreadGoodQueryTest.getQueryList(tno);
 		
 		//パラメータをJSPに転送したい。
 		req.setAttribute("tno",tno);

@@ -6,16 +6,16 @@ import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import info.UsagiProfile;
-import database.ThreadNewInsertTest;
-import database.ThreadNewQueryTest;
+import database.ThreadOldInsertTest;
+import database.ThreadOldQueryTest;
 import database.ThreadUpdate;
 import java.util.List;
 
 
-public class ThreadNewServlet extends HttpServlet{
+public class ThreadOldServlet extends HttpServlet{
 	
 	String tno;
-	String serial;
+	String today;
 	
 	public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
@@ -24,11 +24,12 @@ public class ThreadNewServlet extends HttpServlet{
 		req.setCharacterEncoding("Windows-31J");
 		
 		tno=req.getParameter("tno");
+		
 		//serial=req.getParameter("serial");
-		//ThreadNewQueryTest.getQueryList(tno);
+		//ThreadOldQueryTest.getQueryList(tno);
 		
 		System.out.println(tno);
-		List<UsagiProfile> plist=ThreadNewQueryTest.getQueryList(tno);
+		List<UsagiProfile> plist=ThreadOldQueryTest.getQueryList(tno);
 		
 		//パラメータをJSPに転送したい。
 		
@@ -38,7 +39,7 @@ public class ThreadNewServlet extends HttpServlet{
 		//転送先のJSPを指定
 		RequestDispatcher dis=req.getRequestDispatcher("/thread");
 		
-		System.out.println(tno+serial);
+		System.out.println(tno);
 		
 		//JSPに転送
 		dis.forward(req,res);
@@ -59,7 +60,8 @@ public class ThreadNewServlet extends HttpServlet{
 		}else{
 			String name=req.getParameter("name");
 			String contents=req.getParameter("contents");
-			serial=req.getParameter("serial");
+			String serial=req.getParameter("serial");
+			today=req.getParameter("today");
 			
 			String n="";
 			
@@ -81,7 +83,7 @@ public class ThreadNewServlet extends HttpServlet{
 			}
 			
 			//データベースに書き込みたい
-			ThreadNewInsertTest.insertUser_ResponseTable(n,c,tno,serial);
+			ThreadOldInsertTest.insertUser_ResponseTable(n,c,tno,serial,today);
 		}
 		
 		
@@ -107,9 +109,9 @@ public class ThreadNewServlet extends HttpServlet{
 		
 		//データベースからリストをもらいたい
 		/*List<UsagiProfile> plist=getList();*/
-		List<UsagiProfile> plist=ThreadNewQueryTest.getQueryList(tno);
+		List<UsagiProfile> plist=ThreadOldQueryTest.getQueryList(tno);
 		//パラメータをJSPに転送したい。
-		
+		req.setAttribute("tno",tno);
 		req.setAttribute("users",plist);
 		
 		//転送先のJSPを指定

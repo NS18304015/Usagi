@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ThreadNewInsertTest{
-	public static int insertUser_ResponseTable(String Name,String Contents,String Tno,String Serial){
+public class ThreadOldInsertTest{
+	public static int insertUser_ResponseTable(String Name,String Contents,String Tno,String Serial,String Today){
 		int count = 0; //処理した行数を入れるための変数
 		try{
 			//Driverインターフェイスを実装するクラスをロードする
@@ -25,7 +25,7 @@ public class ThreadNewInsertTest{
 			System.out.println(Tno);
 			
 			//SQL文を変数に格納する
-			String sql="insert into RESPONSE_TABLE(Response_No,response_serialno,Response_UserName,Response_Contents,Thread_No) values(TEST_SEQ_B.nextval,'"+Serial+"','"+Name+"','"+Contents+"','"+Tno+"')";
+			String sql="insert into RESPONSE_TABLE(Response_No,response_serialno,Response_UserName,Response_Contents,Thread_No,response_time) values(TEST_SEQ_B.nextval,'"+Serial+"','"+Name+"','"+Contents+"','"+Tno+"','"+Today+"')";
 			System.out.println(sql);
 			
 			//Statementインターフェイスを実装するクラスの
