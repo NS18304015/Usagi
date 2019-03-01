@@ -27,10 +27,10 @@
 	</div>
 	
 	<table border="1">
-		<tr><th>スレッド一覧</th><th>タイトル</th><th>名前</th><th>内容</th><th>投稿時間</th></tr>
+		<tr><th>スレッド一覧</th></tr><tr><th>タイトル</th><th>名前</th><th>内容</th><th>投稿時間</th></tr>
 		<c:forEach var="prof" items="${users}">
-			<tr><td><a href="threadold?tno=${prof.threadno}">${prof.threadno}</a></td>
-			<td>${prof.title}</td><td>${prof.name}</td><td>${prof.contents}</td><td>${prof.time}</td>
+			<tr><td><a href="threadold?tno=${prof.threadno}">${prof.title}</a></td>
+			<td>${prof.name}</td><td>${prof.contents}</td><td>${prof.time}</td>
 			<td>
 			<form method='post' action='indexnew'>
 				<button name="report" value="${prof.threadno}">報告</button>
