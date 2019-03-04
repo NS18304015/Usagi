@@ -32,9 +32,10 @@
 		%>
 		<br>
 		<form method='post' action='indexnew'>
-			<textarea name="title"placeholder='タイトル' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
-			<textarea name="name"placeholder='名前' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
-			<textarea name="contents"placeholder='一件目のレス' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>	
+			<textarea maxlength="100" name="title"placeholder='タイトル(100字以内)' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea maxlength="50" name="name"placeholder='名前(50字以内)' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea maxlength="300" name="contents"placeholder='一件目のレス(300字以内)' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>	
+			<p>*改行は一文字です。</p>
 			<button type='submit' value='<%=today%>' name='time'>送信</button>
 		</form>
 </body>

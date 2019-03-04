@@ -73,11 +73,12 @@
 	
 	<h1>返答</h1>
 		<form method='post' action='threadold?tno=${prof.threadno}'>
-			<textarea name="name"placeholder='名前' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
-			<textarea name="contents"placeholder='レスポンスの内容' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea maxlength="50" name="name"placeholder='名前(50文字以内)' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
+			<textarea maxlength="300" name="contents"placeholder='レスポンスの内容(300文字以内)' style="width:600px; height:100px;" cols="40" rows="8" required></textarea><br>
 			<input type="hidden" value='<%=today %>' name='today'>
 			<button type='submit' value='<%=count %>' name='serial'>送信</button>
 		</form>
+		<p>*改行は一文字です。</p>
 	
 	<br>
 	<table><td align="center">レスポンス並び替え</td></table>
